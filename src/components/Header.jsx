@@ -1,8 +1,19 @@
 import React from 'react'
+import {Link} from "react-router-dom"
+import Logo from '../images/logo.png'
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <nav>
+      <div className="container nav__container">
+        <Link to="/" className='nav__logo'>
+          <img src={Logo} alt="Navbar Logo" srcset="" />
+        </Link>
+        <ul className="nav__menu">
+          <li><Link to="/profile"></Link></li>
+        </ul>
+      </div>
+    </nav>
   )
 }
 
