@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
   const [userData, setUserData] = useState({
@@ -8,11 +9,11 @@ const Register = () => {
     password2: ''
   })
 
-  // const changeInputHandler = (e) => {
-  //   setUserData({
-  //     return {...prevState, [e.target.name]: e.target.value}
-  //   })
-  // }
+  const changeInputHandler = (e) => {
+    setUserData(prevState => {
+      return {...prevState, [e.target.name]: e.target.value}
+    })
+  }
 
   return (
     <section className="register">
@@ -20,8 +21,16 @@ const Register = () => {
         <h2>Sign up</h2>
         <form action="" className="form register__form">
           <p className="form__error-message">This is an error message</p>
-          <input type="text" name="name" placeholder="Full name" value={userData.name} />
-          {/* onChange={changeInputHandler}/> */}
+          <input type="text" placeholder="Full name" name="name"  value={userData.name} 
+          onChange={changeInputHandler}/>
+          <input type="text" placeholder="Email" name="email" value={userData.email} 
+          onChange={changeInputHandler}/>
+          <input type="password" placeholder="Password" name="password" value={userData.password} 
+          onChange={changeInputHandler}/>
+          <input type="password" placeholder="Confirm password" name="password2" value={userData.password2} 
+          onChange={changeInputHandler}/>
+          <button type='submit' className='btn primary'>Register</button>
+          <small>Already have an account? <Link to="/login">Sign in</Link></small>
         </form>
       </div>
     </section>
